@@ -3,3 +3,62 @@ import os
 import sys
 import subprocess
 
+ag = argparse.ArgumentParser()
+ag = argparse.ArgumentParser(
+    description = "Python scripts that takes information from csv file and write lines",
+    usage = "python3 Practice_script.py -f ~/USMA_ExpEvo_Samples.csv")
+ag.add_argument("-f", "--file", default = "", help = "csv with information of ID") # to read a csv file with sample imformation
+ag.add_argument("-n", "--email", default = "jcuamatzi@liigh.unam.mx", help = "If you want to receive a notification when the process is done") 
+#ag.add_argument("-r", "--ref", default = "", help = "csv file with the data of the references to map to")
+ag.add_argument("-m", "--mapping", default = "BWA", help = "mapping tool. BWA or Bowtie2 (B2)")
+ag.add_argument("-d", "--directory", default = "/home/jcuamatzi", help = "path to the project directory")
+ag.add_argument("-t", "--task", default = "", help = "Task")
+ag.add_argument("-M", "--memory", default = "2", help = "RAM memory")
+ag.add_argument("-w", "--window",  default = "100", help = "size of the windows in bp")
+ag.add_argument("-a", "--assembler",  default = "MegaHit", help = "assembler used for de novo assembly")
+
+
+args = vars(ag.parse_args())
+arg_file = args["file"]
+#arg_reference = args["ref"]
+email = str(args["email"])
+map_tool = str(args["mapping"])
+directory = str(args["directory"])
+task = str(args["task"])
+memory = str(args["memory"])
+window = str(args["window"])
+assembler = str(args["assembler"])
+##### Functions #####
+# Function to open a csv file
+# With this function, we are only open the file
+def opencsv (csv_file):
+    arr = []
+    csv_file = open(csv_file,"r",encoding = "utf-8")
+    for line in csv_file:
+        arr.append(line.strip().split(","))
+    csv_file.close
+    return arr
+# Function to look at info from the header
+# This is a generic function in order to look at the header (first row) of any csv file
+def extindex (row,header):
+    col_ID = 0
+    for col in row:
+        if header in col:
+            break
+        else:
+            col_ID += 1        
+    return col_ID
+# Function to extract info from the column at a specific header
+# This function employ the extindex function
+def extcol (array, header):
+    index = extindex(array[0], header)
+    arr = []
+    for i in range(1, len(array)):
+        for j in range(0, len(array[0])):
+            if j == index:
+                arr.append(array[i][j])
+            else:
+                pass
+    return arr
+# Function to write the header of sge file
+#
