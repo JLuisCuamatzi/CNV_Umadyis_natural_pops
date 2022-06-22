@@ -240,3 +240,34 @@ source /etc/bashrc
     print ("## END_MAPPING", file = sge)
     print ("#", file = sge)
     print ("#", file = sge)
+
+
+
+sge.close()
+    return sge_name  
+# Update 16/08/2021
+
+##### MAIN #####
+## OPEN FILE ##
+matrix_csv = opencsv(arg_file)
+wd_project = directory
+## IDs & NAMES ##
+smpls_ID = extcol(matrix_csv, "#ID")
+pyout_name = wd_project + "/log/Py_scripts/" + task + "/" + fecha + "_" + task + "_py.out"
+if not os.path.exists(wd_project + "/log/Py_scripts/" + task + "/"):
+            os.makedirs(wd_project + "/log/Py_scripts/" + task + "/")
+pyout_name = os.path.normpath(pyout_name)
+pyoutput = open(pyout_name, "a+")
+for i in range(0, len(smpls_ID)):
+    ID = smpls_ID[i]
+    sample_name = extcol(matrix_csv, "Name")[i]
+    sge = mapping(ID)
+    print(tiempo, file = pyoutput)
+    subprocess.run(["qsub",sge], stdout=pyoutput)
+    print(tiempo, file = pyoutput)
+
+
+
+
+
+
