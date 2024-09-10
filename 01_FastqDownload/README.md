@@ -1,0 +1,21 @@
+## Downloading
+
+The links to download the `FASTQ` files were obtained from ENA browser.
+
+The scripts `ena-file-download-read_run-PRJNA561077-fastq_ftp-20220710-2332.sh` and `ena-file-download-read_run-PRJNA674756-fastq_ftp-20220710-1640.sh` were automatically generated in ENA Browser once I click <b>Download All</b> once I access the respective BioProject.
+
+A `.txt` with the name of both `sh` files was generated using
+
+```
+find . -maxdepth 1 -name "*.sh" | sed 's|^\./||' > Umaydis_sh2DownloadFastqFiles.txt
+```
+
+The python script `` was used to download the FASTQ files
+```
+python3 ../scripts/01_DownloadFastqFiles.py -i Umaydis_sh2DownloadFastqFiles.txt
+```
+
+## FASTQ rename
+
+
+The FASTQ files were renamed with the script `01_FastqRename.py` to identify them with the ID provided in the studies conducted by Schweizer <i>et al</i>., 2021 and Depotter <i>et al</i>., 2021.
