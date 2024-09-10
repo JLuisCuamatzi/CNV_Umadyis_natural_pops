@@ -7,3 +7,13 @@ In this project, I used the sequencing data of fifty <i>U. maydis</i> isolates p
     - The research conducted by Depotter <i>et al</i>., 2021 includes a total of 28 isolates from Europe and China
 
 The genome [<i>U. maydis</i> 521 v.2.0](https://fungi.ensembl.org/Ustilago_maydis/Info/Index) was used as reference genome for the subsequently analysis.
+
+## 01. Fastq Files Download
+The fastq files were download from the NCBI by accessing the BioProject [PRJNA674756](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA561077) and [PRJNA561077](https://www.ncbi.nlm.nih.gov/bioproject/PRJNA561077) for Schweizer <i>et al</i>., 2021.
+
+## 02. Cleaning and Mapping
+The fastq files were processed with the <i>pipeline</i> reported by [Cuamatzi-Flores <i>et al</i>., 2024](https://link.springer.com/article/10.1007/s10123-024-00489-8) available at [USMA_H2O2_Adaptation](https://github.com/JLuisCuamatzi/USMA_H2O2_Adaptation/tree/main).
+ 
+## 03. Identification of Copy Number Variants by Analyzing the Normalized Coverage
+
+
