@@ -1,0 +1,2 @@
+ena-file-download-read_run-PRJNA561077-fastq_ftp-20240909-2332.sh
+ena-file-download-read_run-PRJNA674756-fastq_ftp-20240910-1640.sh
