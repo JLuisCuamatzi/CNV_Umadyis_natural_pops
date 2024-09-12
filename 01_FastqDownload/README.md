@@ -19,4 +19,4 @@ python3 ../scripts/01_DownloadFastqFiles.py -i Umaydis_sh2DownloadFastqFiles.txt
 ## FASTQ rename
 
 
-The FASTQ files were renamed with the script `01_FastqRename.py` to identify them with the ID provided in the studies conducted by Schweizer <i>et al</i>., 2021 and Depotter <i>et al</i>., 2021.
+The FASTQ files were renamed to identify them with the ID provided in the studies conducted by Schweizer <i>et al</i>., 2021 and Depotter <i>et al</i>., 2021.
